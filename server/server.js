@@ -1,9 +1,11 @@
 const express = require('express');
 const morgan = require('morgan');
 const bodyParser= require('body-parser');
-const User = require('./models/user');
+
 const mongoose = require('mongoose');
 const dotenv = require('dotenv');
+
+const User = require('./models/user');
 
 
 dotenv.config()
@@ -40,8 +42,26 @@ app.get('/',(req,res) =>{
 
 
 app.post('/',(req,res) => {
+    // creating a new user object
+    let user = new User();
+ 
+    user.name = req.body.name;
+    user.email= req.body.email;
+    user.password = req.body.password;
 
-   console.log(req.body.name)
+
+    user.save( (err) => {
+
+
+        if(err){
+            res.json(err)
+        }
+
+        else {
+
+            res.json("successfully saved")
+        }
+    })
 
 })
 

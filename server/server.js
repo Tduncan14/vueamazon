@@ -41,30 +41,22 @@ app.get('/',(req,res) =>{
 })
 
 
-app.post('/',(req,res) => {
-    // creating a new user object
+app.post("/", (req, res) => {
     let user = new User();
- 
     user.name = req.body.name;
-    user.email= req.body.email;
+    user.email = req.body.email;
     user.password = req.body.password;
 
-
-    user.save( (err) => {
-
-
-        if(err){
-            res.json(err)
-        }
-
-        else {
-
-            res.json("successfully saved")
-        }
-    })
-
-})
-
+    console.log( user,'user');
+  
+    user.save(err => {
+      if (err) {
+        res.json(err);
+      } else {
+        res.json("successfully saved");
+      }
+    });
+  });
 
 const PORT = process.env.PORT || 3000
 

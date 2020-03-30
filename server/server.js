@@ -7,7 +7,6 @@ const dotenv = require('dotenv');
 
 const User = require('./models/user');
 
-
 dotenv.config()
 
 
@@ -38,12 +37,14 @@ app.use(bodyParser.urlencoded({extended:false}))
 // require api
 
 const productRoutes = require('./routes/product');
+const categoryRoutes = require('./routes/category');
 
 
 //or
 // app.post('/api',productRoutes);
 app.use('/api',productRoutes)
 
+app.use('/api', categoryRoutes)
 
 
 

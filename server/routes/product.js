@@ -21,7 +21,7 @@ router.post('/products', upload.single("photo"),async(req,res) =>{
 
       product.title = req.body.title;
       product.description = req.body.description;
-      product.photo = req.body.photo;
+      product.photo = req.file.location;
       product.stockQuantity = req.body.stockQuantity;
       // product.price = req.body.price;
 

@@ -35,28 +35,42 @@ app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({extended:false}))
 
 
+// require api
+
+const productRoutes = require('./routes/product');
+
+
+//or
+// app.post('/api',productRoutes);
+app.use('/api',productRoutes)
+
+
+
+
+
+
 app.get('/',(req,res) =>{
 
   res.send('hello world')
 })
 
 
-app.post("/", (req, res) => {
-    let user = new User();
-    user.name = req.body.name;
-    user.email = req.body.email;
-    user.password = req.body.password;
+// app.post("/", (req, res) => {
+//     let user = new User();
+//     user.name = req.body.name;
+//     user.email = req.body.email;
+//     user.password = req.body.password;
 
-    console.log( user,'user');
+//     console.log( user,'user');
   
-    user.save(err => {
-      if (err) {
-        res.json(err);
-      } else {
-        res.json("successfully saved");
-      }
-    });
-  });
+//     user.save(err => {
+//       if (err) {
+//         res.json(err);
+//       } else {
+//         res.json("successfully saved");
+//       }
+//     });
+//   });
 
 const PORT = process.env.PORT || 3000
 

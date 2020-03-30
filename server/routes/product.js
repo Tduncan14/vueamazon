@@ -4,6 +4,8 @@
 
  const router = express.Router();
 
+ const upload = require ('../middlewares/upload.photo');
+
 //  title:String,
 //  description:String,
 //  photo:String,
@@ -13,7 +15,7 @@
 
 // post request -create a new product
 
-router.post('/products', async(req,res) =>{
+router.post('/products', upload.single("photo"),async(req,res) =>{
   try{
       let product = new Product();
 
@@ -21,7 +23,7 @@ router.post('/products', async(req,res) =>{
       product.description = req.body.description;
       product.photo = req.body.photo;
       product.stockQuantity = req.body.stockQuantity;
-      product.price = req.body.price;
+      // product.price = req.body.price;
 
 
       await product.save()
@@ -59,3 +61,6 @@ router.post('/products', async(req,res) =>{
 
 
 // delete request = delete a single product
+
+
+module.exports = router;

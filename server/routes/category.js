@@ -38,7 +38,7 @@ router.post('/catergories', async (req,res) =>{
 router.get("/catergories",async(req,res) =>{
 
     try{
-        let catergories = Category.find()
+        let catergories =  await Category.find()
 
 
 

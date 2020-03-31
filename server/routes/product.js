@@ -51,10 +51,64 @@ router.post('/products', upload.single("photo"),async(req,res) =>{
 
 // get request which will get all the products
 
+router.get('/products', async(req,res) =>{
+
+ try{
+
+    let products = await Product.find()
+
+    res.json({
+
+      products:products
+    })
+
+
+ }
+
+
+ catch(err){
+
+  res.status(500).json({
+
+    success:false,
+    err:err.message
+  })
+
+ }
+
+
+})
+
 
 
 // get request - will get a single product
 
+router.get('/products/:id', async(req,res)=>{
+
+  try{
+
+      
+       let product = await Product.findOne({_id:req.params.id})
+
+
+       res.json({
+         product:product
+       })
+
+
+
+  }
+
+  catch(err){
+
+    res.status(500).json({
+        success:false,
+        err:err.message
+    })
+  }
+
+
+})
 
 
 // put request - will update a single roduct

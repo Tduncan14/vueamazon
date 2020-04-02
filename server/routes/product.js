@@ -113,8 +113,86 @@ router.get('/products/:id', async(req,res)=>{
 
 // put request - will update a single roduct
 
+router.put("/products/:id",upload.single('photo'), async (req,res) =>{
+
+try{
+  let product = await Product.findOneAndUpdate({_id: req.params.id},{
+    $set:{
+      title:req.body.title,
+      price:req.body.price,
+      category:req.body.category,
+      photo:req.file.location,
+      description:req.body.description,
+      owner:req.body.ownerID
+    }
+  },{upsert:true});
+
+  res.json({
+    success:true,
+    updatedProduct:product
+  })
+}
+
+catch(err){
+  res.status(500).json({
+    success:false,
+    message:err.message
+  })
+}
+ 
+})
+
 
 // delete request = delete a single product
 
+// router.delete('/products/:id', async(req,res) =>{
+
+// try{
+//   const product = await Product.findByIdAndDelete({_id: req.params.id})
+
+//   res.json({
+//     success:true,
+//     message:"it is deleted successfully"
+//   })
+
+// }
+
+// catch(err){
+
+//   res.status(404).json({
+
+//     success:false,
+//     err:err.message
+//   })
+// }
+
+
+router.delete('/products',async(req,res)=>{
+
+
+  try {
+
+
+    let deleteProduct = await Product.findByIdAndDelete({
+      _id: req.params.id
+    })
+
+
+    if(deleteProduct){
+      res.json({
+        status:true,
+        message:"successfully deleted"
+      })
+    }
+  }
+
+  catch(err){
+
+    res.status(500).json({
+        success:false,
+        err:err.message
+    })
+  }
+})
 
 module.exports = router;

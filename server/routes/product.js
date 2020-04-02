@@ -167,16 +167,14 @@ catch(err){
 // }
 
 
-router.delete('/products',async(req,res)=>{
+router.delete('/products/:id',async(req,res)=>{
 
 
   try {
 
-
-    let deleteProduct = await Product.findByIdAndDelete({
+    let deleteProduct = await Product.findOneAndDelete({
       _id: req.params.id
     })
-
 
     if(deleteProduct){
       res.json({

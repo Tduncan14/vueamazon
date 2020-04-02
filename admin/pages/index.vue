@@ -1,72 +1,48 @@
 <template>
-  <div class="container">
-    <div>
-      <logo />
-      <h1 class="title">
-        admin
-      </h1>
-      <h2 class="subtitle">
-        My doozie Nuxt.js project
-      </h2>
-      <div class="links">
-        <a
-          href="https://nuxtjs.org/"
-          target="_blank"
-          class="button--green"
-        >
-          Documentation
-        </a>
-        <a
-          href="https://github.com/nuxt/nuxt.js"
-          target="_blank"
-          class="button--grey"
-        >
-          GitHub
-        </a>
-      </div>
-    </div>
+<main>
+  <div class="a-spacing-large">
+
+   <div class="container-fluid browsing-history">
+     <div class="row">
+       <div class="col-sm-8 col-8">
+         <h1 class="a-size-large a-spacing-none a-text-normal">
+           All products
+         </h1>
+         <a href="#" class="a-button-buy-again">
+           Add a new product
+         </a>
+         <a href="#" class="a-button-history margin-right-10">
+           Add a new product
+         </a>
+         <a href="#" class="a-button-history margin-right-10">
+           Add a new product
+         </a>
+       </div>
+
+     </div>
+
+
+
+
+
+
+   </div>
+
+
   </div>
+
+</main>
+ 
 </template>
 
 <script>
 import Logo from '~/components/Logo.vue'
 
 export default {
-  components: {
-    Logo
-  }
+ 
 }
 </script>
 
 <style>
-.container {
-  margin: 0 auto;
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-}
 
-.title {
-  font-family: 'Quicksand', 'Source Sans Pro', -apple-system, BlinkMacSystemFont,
-    'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-  display: block;
-  font-weight: 300;
-  font-size: 100px;
-  color: #35495e;
-  letter-spacing: 1px;
-}
-
-.subtitle {
-  font-weight: 300;
-  font-size: 42px;
-  color: #526488;
-  word-spacing: 5px;
-  padding-bottom: 15px;
-}
-
-.links {
-  padding-top: 15px;
-}
 </style>

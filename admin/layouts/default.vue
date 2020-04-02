@@ -2,7 +2,7 @@
   <div>
     <nuxt />
 
-    sod
+    
   </div>
 </template>
 

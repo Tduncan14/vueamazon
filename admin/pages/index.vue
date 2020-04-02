@@ -93,7 +93,27 @@
 import Logo from '~/components/Logo.vue'
 
 export default {
+
+   async asyncData({axios}) {
+
+   try{
+     let response = await $axios.$get("http://localhost:8000/api/products")
+
+
+     return{
+       products:response.products
+     }
+   }
+
+catch(err){
+
+
+  }
  
+
+  }
+
+  
 }
 </script>
 

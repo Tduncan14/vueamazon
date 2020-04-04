@@ -5,7 +5,7 @@ const Category = require('../models/category');
 //post request
 
 
-router.post('/catergories', async (req,res) =>{
+router.post('/categories', async (req,res) =>{
 
   try{
       const category = new Category();
@@ -35,16 +35,16 @@ router.post('/catergories', async (req,res) =>{
 })
 
 
-router.get("/catergories",async(req,res) =>{
+router.get("/categories",async(req,res) =>{
 
     try{
-        let catergories =  await Category.find()
+        let categories =  await Category.find()
 
 
 
         res.json({
             success:true,
-            catergories:catergories
+            categories:categories
         })
 
     }

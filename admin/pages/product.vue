@@ -173,6 +173,26 @@ catch(err){
 
             console.log(this.selectedFile,"FILE")
             this.fileName = event.target.files[0].name
+
+            console.log(this.fileName,"this is the filename");
+        },
+
+        async onAddProduct(){
+            let data = new FormData();
+
+            data.append("title", this.title);
+            data.append("price",this.price);
+            data.append("description",this.description);
+            data.append("ownerID",this.ownerID);
+            data.append("categoryID",this.categoryID);
+            data.append("photo",this.selectedFile, this.selectedFile.name);
+
+
+            let result = await this.$axios.$post('http://localhost:8000/api/products',data);
+
+            this.$router.push('/')
+
+
         }
     }
     

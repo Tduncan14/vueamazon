@@ -1,7 +1,7 @@
 const express = require('express');
 const morgan = require('morgan');
 const bodyParser= require('body-parser');
-
+const cors = require('cors');
 const mongoose = require('mongoose');
 const dotenv = require('dotenv');
 
@@ -29,6 +29,7 @@ mongoose.connect(process.env.DATABASE,{
 
 mongoose.set('useCreateIndex', true)
 
+app.use(cors());
 app.use(morgan('dev'));
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({extended:false}))

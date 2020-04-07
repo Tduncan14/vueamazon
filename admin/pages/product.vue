@@ -57,6 +57,17 @@
                            style="width:100%;"
                            v-model="price">
                                      </div>
+                                    <!-- stock Quantity -->
+
+                                       <div class="a-spacing-top-medium">
+                            <label style="margin-bottom:0px;">
+                                Stock Quantity
+                            </label>  
+                                  
+                          <input type="number" class="a-input-text"
+                           style="width:100%;"
+                           v-model="stockQuantity">
+                                     </div>
                                  <!-- description -->
                              <div class="a-spacing-top-medium">
                                   <label style="margin-bottom:0px;">
@@ -84,7 +95,7 @@
                             <div class="a-spacing-top-large">
                                 <span class="a-button-register">
                                     <span class="a-button-inner">
-                                        <span class="a-button-text">
+                                        <span class="a-button-text" @click="onAddProduct">
                                             Add Product
                                         </span>
                                     </span>
@@ -161,7 +172,8 @@ catch(err){
             price:0,
             description:'',
             selectedFile:null,
-            fileName:''
+            fileName:'',
+            stockQuantity:1
 
         }
     },
@@ -182,7 +194,9 @@ catch(err){
 
             data.append("title", this.title);
             data.append("price",this.price);
-            data.append("description",this.description);
+            data.append("description",this.description)
+            
+            data.append("stockQuantity",this.stockQuantity)
             data.append("ownerID",this.ownerID);
             data.append("categoryID",this.categoryID);
             data.append("photo",this.selectedFile, this.selectedFile.name);

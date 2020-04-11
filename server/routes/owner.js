@@ -6,7 +6,7 @@ const upload = require('../middlewares/upload.photo');
 
 const router = express.Router();
 
-router.post('/owner',upload.single("photo"),async (req,res) =>{
+router.post('/owners',upload.single("photo"),async (req,res) =>{
 
 try {
     let owner = new Owner();
@@ -18,6 +18,8 @@ try {
 
      await owner.save()
 
+
+     console.log(owner,"owner")
 
      res.json({
          success:true,
